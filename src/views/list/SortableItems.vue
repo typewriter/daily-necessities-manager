@@ -1,6 +1,6 @@
 <template>
   <div class="items">
-    <b-list-group>
+    <transition-group name="list" tag="b-list-group">
       <SortableItem v-for="item in items"
         v-bind:key="item.name"
         :name="item.name"
@@ -9,7 +9,7 @@
         v-on:down="down"
         v-on:remove="remove"
         v-on:change="change" />
-    </b-list-group>
+    </transition-group>
   </div>
 </template>
 
@@ -41,3 +41,20 @@ import SortableItem from "./SortableItem.vue";
 })
 export default class SortableItems extends Vue {}
 </script>
+
+<style scoped>
+.list-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+.list-enter-active, .list-leave-active {
+  transition: all 0.5s;
+}
+.list-enter, .list-leave-to /* .list-leave-active for below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateX(50px);
+}
+.list-move {
+  transition: transform 0.3s;
+}
+</style>
