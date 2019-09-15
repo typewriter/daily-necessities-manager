@@ -3,7 +3,7 @@
     <b-container>
       <b-navbar class="text-left">
         <b-navbar-nav>
-          <b-navbar-brand href="#"><span class="small text-secondary">シンプルな日用品在庫管理ツール</span><br>にちまね!</b-navbar-brand>
+          <b-navbar-brand href="#"><span class="small text-secondary">シンプルな日用品ストック管理ツール</span><br>Stokk</b-navbar-brand>
         </b-navbar-nav>
       </b-navbar>
       <b-row>

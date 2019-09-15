@@ -1,9 +1,9 @@
 <template>
   <div class="privacy-policy text-left">
     <b-container>
-      <b-navbar>
-        <b-navbar-nav class="text-truncate">
-          <b-nav-item href="#">にちまね!</b-nav-item>
+      <b-navbar class="text-left">
+        <b-navbar-nav>
+          <b-navbar-brand href="#"><span class="small text-secondary">シンプルな日用品ストック管理ツール</span><br>Stokk</b-navbar-brand>
         </b-navbar-nav>
       </b-navbar>
       <h5>利用規約</h5>

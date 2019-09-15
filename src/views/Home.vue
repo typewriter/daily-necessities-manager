@@ -3,7 +3,7 @@
     <header class="sticky-top">
       <b-container>
         <b-navbar type="dark" variant="primary">
-          <b-navbar-brand href="#" v-if="!isSaving">にちまね!</b-navbar-brand>
+          <b-navbar-brand href="#" v-if="!isSaving">Stokk</b-navbar-brand>
           <b-navbar-brand href="#" v-if="isSaving"><small><b-spinner small /> 保存しています...</small></b-navbar-brand>
           <b-navbar-nav class="ml-auto">
             <b-nav-form>
