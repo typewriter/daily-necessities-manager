@@ -24,4 +24,8 @@
 #nav a.router-link-exact-active {
   color: #42b983;
 }
+
+@media screen and (max-width: 800px) {
+  .container { padding: 0 }
+}
 </style>
