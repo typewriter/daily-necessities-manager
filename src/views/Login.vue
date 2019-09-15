@@ -1,25 +1,40 @@
 <template>
   <div class="login">
     <b-container>
-      <b-navbar>
-        <b-navbar-nav class="text-truncate">
-          <b-nav-brand href="#">にちまね! -シンプルな日用品の在庫マネージャ-</b-nav-brand>
+      <b-navbar class="text-left">
+        <b-navbar-nav>
+          <b-navbar-brand href="#"><span class="small text-secondary">シンプルな日用品在庫管理ツール</span><br>にちまね!</b-navbar-brand>
         </b-navbar-nav>
       </b-navbar>
       <b-row>
-        <b-col class="align-self-center">
-          <div id="firebaseui-container"></div>
-        </b-col>
-        <b-col>
+        <b-col cols="12" lg="6" xl="6">
           <div class="description">
-            <img src="../assets/screenshot.png" fluid />
+            <b-img :src="require('../assets/screenshot.png')" fluid />
           </div>
+        </b-col>
+        <b-col cols="12" lg="6" xl="6" class="align-self-center text-left">
+          <ul class="m-2">
+            <li>シンプルな操作性で使いやすい</li>
+            <li>PC・スマートフォン両対応</li>
+            <li>同じアカウントでログインすればどこでもアクセス可能</li>
+          </ul>
+
+          <b-card class="m-2">
+            <div id="firebaseui-container" v-show="!isLoggedIn || anotherLogin"></div>
+            <div v-if="isLoggedIn && !anotherLogin">
+              既にログイン済みです。
+              <ul class="m-3 mark-none">
+                <li class="m-2"><router-link to="/"><i class="fas fa-arrow-right"></i> サービスを利用する</router-link></li>
+                <li class="m-2"><b-link href="#" v-on:click="wantToAnother"><i class="fas fa-user-cog"></i> 別のユーザでログインする</b-link></li>
+              </ul>
+            </div>
+          </b-card>
         </b-col>
       </b-row>
       <div class="author text-left">
         <small>
           Developed by たいぷらいたー (<a href="https://www.nyamikan.net">にゃみかん</a>)<br>
-          本サービスは無償・無保証です。認証情報はユーザ認証以外の目的では使用いたしません。
+          本サービスは無償・無保証です。データは本サービスの提供以外の目的では使用しません。
         </small>
       </div>
     </b-container>
@@ -34,7 +49,24 @@ import firebaseui from "firebaseui-ja";
 import "firebaseui/dist/firebaseui.css";
 
 @Component({
+  data: function() {
+    return {
+      isLoggedIn: false,
+      anotherLogin: false
+    }
+  },
+  methods: {
+    wantToAnother: function() {
+      this.$data.anotherLogin = true;
+    }
+  },
   mounted: function() {
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.$data.isLoggedIn = true;
+      }
+    });
+
     var uiConfig = {
       signInSuccessUrl: './',
       signInOptions: [
@@ -60,3 +92,13 @@ import "firebaseui/dist/firebaseui.css";
 })
 export default class Login extends Vue {}
 </script>
+
+<style scoped>
+.small {
+  font-size: 70%;
+}
+
+ul.mark-none {
+  list-style: none;
+}
+</style>

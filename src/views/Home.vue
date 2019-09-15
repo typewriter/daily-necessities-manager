@@ -1,27 +1,31 @@
 <template>
   <div class="home text-left">
+    <header class="sticky-top">
+      <b-container>
+        <b-navbar type="dark" variant="primary">
+          <b-navbar-brand href="#" v-if="!isSaving">にちまね!</b-navbar-brand>
+          <b-navbar-brand href="#" v-if="isSaving"><small><b-spinner small /> 保存しています...</small></b-navbar-brand>
+          <b-navbar-nav class="ml-auto">
+            <b-nav-form>
+              <b-button v-on:click="toggle" variant="text-decoration-none" class="text-white">
+                <span v-if="!isEditMode"><i class="far fa-edit"></i> 編集</span>
+                <span v-if="isEditMode"><i class="far fa-check-circle"></i> 完了</span>
+              </b-button>
+            </b-nav-form>
+          </b-navbar-nav>
+        </b-navbar>
+        <ItemAdder
+          v-on:add="itemAdd" v-if="!isLoading && !message" />
+      </b-container>
+    </header>
     <b-container>
-      <b-navbar>
-        <b-navbar-nav class="text-truncate">
-          <b-nav-item href="#" v-if="!isSaving">にちまね!</b-nav-item>
-          <b-nav-item href="#" v-if="isSaving" variant="info"><small><i class="fas fa-spinner"></i> 保存しています...</small></b-nav-item>
-        </b-navbar-nav>
-        <b-navbar-nav class="ml-auto">
-          <b-button v-on:click="toggle" variant="link text-decoration-none">
-            <span v-if="!isEditMode"><i class="far fa-edit"></i> 編集</span>
-            <span v-if="isEditMode"><i class="far fa-check-circle"></i> 完了</span>
-          </b-button>
-        </b-navbar-nav>
-      </b-navbar>
       <div v-if="isLoading">
-        <i class="fas fa-spinner"></i> 読み込んでいます...
+        <b-spinner small /> 読み込んでいます...
       </div>
       <b-alert v-if="message" show variant="danger">
         {{ message }}
       </b-alert>
       <div v-if="!isLoading && !message">
-        <ItemAdder
-          v-on:add="itemAdd" />
         <div v-if="!isEditMode">
           <Items
             :items="items"
