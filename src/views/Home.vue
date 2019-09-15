@@ -2,13 +2,13 @@
   <div class="home text-left">
     <div>
       <b-navbar>
-        <b-navbar-nav>
-          <b-nav-item href="#">にちまね</b-nav-item>
+        <b-navbar-nav class="text-truncate">
+          <b-nav-item href="#">にちまね!</b-nav-item>
         </b-navbar-nav>
         <b-navbar-nav class="ml-auto">
-          <b-button v-on:click="toggle" variant="primary">
-            <span v-if="!isEditMode">編集</span>
-            <span v-if="isEditMode">完了</span>
+          <b-button v-on:click="toggle" variant="link text-decoration-none">
+            <span v-if="!isEditMode"><i class="far fa-edit"></i> 編集</span>
+            <span v-if="isEditMode"><i class="far fa-check-circle"></i> 完了</span>
           </b-button>
         </b-navbar-nav>
       </b-navbar>

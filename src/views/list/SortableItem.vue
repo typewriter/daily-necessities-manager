@@ -3,12 +3,10 @@
     <b-list-group-item>
       <b-form v-on:submit.prevent>
         <b-input-group>
+          <b-button v-on:click="up" variant="link text-decoration-none">▲</b-button>
+          <b-button v-on:click="down" variant="link text-decoration-none">▼</b-button>
           <b-form-input v-model="newName" @keydown.enter="change" @blur="change" />
-          <div class="float-right">
-            <button v-on:click="up">▲</button>
-            <button v-on:click="down">▼</button>
-            <button v-on:click="remove">削除</button>
-          </div>
+          <b-button v-on:click="remove" variant="link text-decoration-none"><i class="fas fa-trash"></i> 削除</b-button>
         </b-input-group>
       </b-form>
     </b-list-group-item>
@@ -48,3 +46,13 @@ import { Component, Vue } from "vue-property-decorator";
 })
 export default class SortableItem extends Vue {}
 </script>
+
+<style scoped>
+button.btn {
+  padding: 0.35rem 0.5rem;
+}
+
+div.list-group-item {
+  padding: 0.5rem 0.75rem;
+}
+</style>

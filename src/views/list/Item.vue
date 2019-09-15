@@ -1,15 +1,15 @@
 <template>
   <div class="item">
-    <b-list-group-item>
-      <span class="text-wrap">
-        {{ name }}
-      </span>
-      <div class="float-right">
-        <button v-on:click="decrement">-</button>
-        {{ amount }}
-        <button v-on:click="increment">+</button>
-      </div>
-    </b-list-group-item>
+    <span class="text-wrap">
+      {{ name }}
+    </span>
+    <div class="float-right text-monospace">
+      <b-button v-on:click="decrement" variant="link text-decoration-none">-</b-button>
+      <span v-if="amount < 0" class="bg-danger text-light">{{ amount }}</span>
+      <span v-if="amount == 0" class="bg-warning">{{ amount }}</span>
+      <span v-if="amount > 0">{{ amount }}</span>
+      <b-button v-on:click="increment" variant="link text-decoration-none">+</b-button>
+    </div>
   </div>
 </template>
 
@@ -32,3 +32,13 @@ import { Component, Vue } from "vue-property-decorator";
 })
 export default class Item extends Vue {}
 </script>
+
+<style scoped>
+button.btn {
+  padding: 0 0.75rem;
+}
+
+div.list-group-item {
+  padding: 0.5rem 0.75rem;
+}
+</style>

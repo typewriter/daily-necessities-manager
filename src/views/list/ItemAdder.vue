@@ -1,7 +1,7 @@
 <template>
   <div class="item-adder">
     <b-list-group>
-      <b-list-group-item v-if="!isAddMode" v-on:click="toggle">
+      <b-list-group-item v-if="!isAddMode" v-on:click="toggle" variant="light">
         + アイテムを追加する
       </b-list-group-item>
       <b-list-group-item v-if="isAddMode">

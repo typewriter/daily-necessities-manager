@@ -1,12 +1,13 @@
 <template>
   <div class="items">
     <b-list-group>
-      <Item v-for="item in items"
-        v-bind:key="item.name"
-        :name="item.name"
-        :amount="item.amount"
-        v-on:increment="increment"
-        v-on:decrement="decrement" />
+      <b-list-group-item v-for="item in items" v-bind:key="item.name">
+        <Item
+          :name="item.name"
+          :amount="item.amount"
+          v-on:increment="increment"
+          v-on:decrement="decrement" />
+      </b-list-group-item>
     </b-list-group>
   </div>
 </template>
