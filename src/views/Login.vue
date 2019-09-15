@@ -7,13 +7,14 @@
         </b-navbar-nav>
       </b-navbar>
       <b-row>
-        <b-col cols="12" lg="6" xl="6">
+        <b-col cols="12" lg="6" xl="6" class="align-self-center">
           <div class="description">
             <b-img :src="require('../assets/screenshot.png')" fluid />
           </div>
         </b-col>
-        <b-col cols="12" lg="6" xl="6" class="align-self-center text-left">
-          <ul class="m-2">
+        <b-col cols="12" lg="6" xl="6" class="p-3 align-self-center text-left">
+          Stokkは、下記の特徴を持った日用品ストック管理ツールです。
+          <ul class="m-1">
             <li>無償サービス</li>
             <li>シンプルな操作性</li>
             <li>PC・スマートフォン両対応</li>
