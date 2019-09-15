@@ -14,27 +14,20 @@
         </b-col>
         <b-col cols="12" lg="6" xl="6" class="align-self-center text-left">
           <ul class="m-2">
-            <li>シンプルな操作性で使いやすい</li>
+            <li>無償サービス</li>
+            <li>シンプルな操作性</li>
             <li>PC・スマートフォン両対応</li>
-            <li>同じアカウントでログインすればどこでもアクセス可能</li>
           </ul>
 
           <b-card class="m-2">
-            <div id="firebaseui-container" v-show="!isLoggedIn || anotherLogin"></div>
-            <div v-if="isLoggedIn && !anotherLogin">
-              既にログイン済みです。
-              <ul class="m-3 mark-none">
-                <li class="m-2"><router-link to="/"><i class="fas fa-arrow-right"></i> サービスを利用する</router-link></li>
-                <li class="m-2"><b-link href="#" v-on:click="wantToAnother"><i class="fas fa-user-cog"></i> 別のユーザでログインする</b-link></li>
-              </ul>
-            </div>
+            <div id="firebaseui-container"></div>
           </b-card>
         </b-col>
       </b-row>
       <div class="author text-left">
         <small>
           Developed by たいぷらいたー (<a href="https://www.nyamikan.net">にゃみかん</a>)<br>
-          本サービスは無償・無保証です。データは本サービスの提供以外の目的では使用しません。
+          本サービスは無償・無保証です。データを本サービス提供以外の目的で使用することはありません。
         </small>
       </div>
     </b-container>
@@ -49,24 +42,7 @@ import firebaseui from "firebaseui-ja";
 import "firebaseui/dist/firebaseui.css";
 
 @Component({
-  data: function() {
-    return {
-      isLoggedIn: false,
-      anotherLogin: false
-    }
-  },
-  methods: {
-    wantToAnother: function() {
-      this.$data.anotherLogin = true;
-    }
-  },
   mounted: function() {
-    firebase.auth().onAuthStateChanged(user => {
-      if (user) {
-        this.$data.isLoggedIn = true;
-      }
-    });
-
     var uiConfig = {
       signInSuccessUrl: './',
       signInOptions: [

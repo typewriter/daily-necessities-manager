@@ -40,6 +40,10 @@
             v-on:remove="itemRemove"
             v-on:change="rename" />
         </div>
+        <div v-if="items.length == 0" class="mt-5 mx-3 text-center text-secondary">
+          <div class="xlarge"><i class="far fa-list-alt"></i></div>
+          アイテムは登録されていません
+        </div>
       </div>
     </b-container>
   </div>
@@ -180,3 +184,9 @@ export default class Home extends Vue {
   public debounceSave: any;
 }
 </script>
+
+<style scoped>
+div.xlarge {
+  font-size: 400%;
+}
+</style>
