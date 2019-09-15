@@ -50,7 +50,9 @@ import { Component, Vue } from "vue-property-decorator";
 import Items from "./list/Items.vue";
 import ItemAdder from "./list/ItemAdder.vue";
 import SortableItems from "./list/SortableItems.vue";
-import firebase from "firebase";
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
 import lodash from "lodash";
 
 @Component({
@@ -72,12 +74,12 @@ import lodash from "lodash";
   },
   created: function() {
     const auth: firebase.auth.Auth = this.$data.auth;
-    const db: firestore.Firestore = this.$data.db;
+    const db: firebase.firestore.Firestore = this.$data.db;
     const vm = this;
 
-    this.debounceSave = lodash.debounce(function() {
+    (<Home>this).debounceSave = lodash.debounce(function() {
         const auth: firebase.auth.Auth = vm.$data.auth;
-        const db: firestore.Firestore = vm.$data.db;
+        const db: firebase.firestore.Firestore = vm.$data.db;
         db.collection("users").doc(auth.currentUser!.uid).set({ items: vm.$data.items }).then(() => {
           vm.$data.isSaving = false;
         }).catch((err) => {
@@ -130,21 +132,23 @@ import lodash from "lodash";
       }
     },
     up: function(name) {
-      for (let i = 1; i < this.items.length; i++) {
-        if (this.items[i].name == name) {
-          let tmp = this.items[i-1];
-          this.items.splice(i-1, 1);
-          this.items.splice(i, 0, tmp);
+      const vm: any = this;
+      for (let i = 1; i < vm.items.length; i++) {
+        if (vm.items[i].name == name) {
+          let tmp = vm.items[i-1];
+          vm.items.splice(i-1, 1);
+          vm.items.splice(i, 0, tmp);
           return;
         }
       }
     },
     down: function(name) {
-      for (let i = 0; i < this.items.length - 1; i++) {
-        if (this.items[i].name == name) {
-          let tmp = this.items[i];
-          this.items.splice(i, 1);
-          this.items.splice(i+1, 0, tmp);
+      const vm: any = this;
+      for (let i = 0; i < vm.items.length - 1; i++) {
+        if (vm.items[i].name == name) {
+          let tmp = vm.items[i];
+          vm.items.splice(i, 1);
+          vm.items.splice(i+1, 0, tmp);
           return;
         }
       }
@@ -164,13 +168,15 @@ import lodash from "lodash";
   watch: {
     items: {
       handler: function() {
-        const vm = this;
-        this.$data.isSaving = true;
-        this.debounceSave();
+        const vm: Home = <Home>this;
+        vm.$data.isSaving = true;
+        vm.debounceSave();
       },
       deep: true
     }
   }
 })
-export default class Home extends Vue {}
+export default class Home extends Vue { 
+  public debounceSave: any;
+}
 </script>

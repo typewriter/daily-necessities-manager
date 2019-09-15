@@ -6,7 +6,7 @@ import "bootstrap-vue/dist/bootstrap-vue.css";
 
 import App from "./App.vue";
 import router from "./router";
-import firebase from "firebase";
+import firebase from "firebase/app";
 
 Vue.use(BootstrapVue);
 Vue.config.productionTip = false;

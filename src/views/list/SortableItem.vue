@@ -31,16 +31,16 @@ import { Component, Vue } from "vue-property-decorator";
   },
   methods: {
     up: function() {
-      this.$emit("up", this.name);
+      this.$emit("up", (<any>this).name);
     },
     down: function() {
-      this.$emit("down", this.name);
+      this.$emit("down", (<any>this).name);
     },
     remove: function() {
-      this.$emit("remove", this.name);
+      this.$emit("remove", (<any>this).name);
     },
     change: function() {
-      this.$emit("change", this.name, this.newName);
+      this.$emit("change", (<any>this).name, (<any>this).newName);
     }
   }
 })

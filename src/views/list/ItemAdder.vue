@@ -32,8 +32,8 @@ import { Component, Vue } from "vue-property-decorator";
     },
     add: function(event) {
       if (event.keyCode !== 13) return;
-      this.$emit('add', this.name);
-      this.name = "";
+      this.$emit('add', (<any>this).name);
+      (<any>this).name = "";
     }
   }
 })
