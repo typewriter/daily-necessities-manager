@@ -12,13 +12,19 @@ const router = new Router({
       path: "/",
       name: "home",
       component: () =>
-        import(/* webpackChunkName: "login" */ "./views/Home.vue")
+        import(/* webpackChunkName: "home" */ "./views/Home.vue")
     },
     {
       path: "/login",
       name: "login",
       component: () =>
         import(/* webpackChunkName: "login" */ "./views/Login.vue")
+    },
+    {
+      path: "/privacy_policy",
+      name: "privacy_policy",
+      component: () =>
+        import(/* webpackChunkName: "privacy_policy" */ "./views/PrivacyPolicy.vue")
     }
   ]
 });

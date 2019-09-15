@@ -1,7 +1,27 @@
 <template>
-  <div class="login text-left">
+  <div class="login">
     <b-container>
-      <div id="firebaseui-container"></div>
+      <b-navbar>
+        <b-navbar-nav class="text-truncate">
+          <b-nav-brand href="#">にちまね! -シンプルな日用品の在庫マネージャ-</b-nav-brand>
+        </b-navbar-nav>
+      </b-navbar>
+      <b-row>
+        <b-col class="align-self-center">
+          <div id="firebaseui-container"></div>
+        </b-col>
+        <b-col>
+          <div class="description">
+            <img src="../assets/screenshot.png" fluid />
+          </div>
+        </b-col>
+      </b-row>
+      <div class="author text-left">
+        <small>
+          Developed by たいぷらいたー (<a href="https://www.nyamikan.net">にゃみかん</a>)<br>
+          本サービスは無償・無保証です。認証情報はユーザ認証以外の目的では使用いたしません。
+        </small>
+      </div>
     </b-container>
   </div>
 </template>
@@ -25,7 +45,7 @@ import "firebaseui/dist/firebaseui.css";
       // tosUrl and privacyPolicyUrl accept either url string or a callback
       // function.
       // Terms of service url/callback.
-      tosUrl: './',
+      tosUrl: './privacy_policy',
       // Privacy policy url/callback.
       privacyPolicyUrl: function() {
         window.location.assign('./privacy_policy');
