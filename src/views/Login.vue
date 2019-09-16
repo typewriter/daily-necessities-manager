@@ -15,7 +15,7 @@
         <b-col cols="12" lg="6" xl="6" class="p-3 align-self-center text-left">
           Stokkは、下記の特徴を持った日用品ストック管理ツールです。
           <ul class="m-1">
-            <li>無償サービス</li>
+            <li>無償、インストール不要</li>
             <li>シンプルな操作性</li>
             <li>PC・スマートフォン両対応</li>
           </ul>
