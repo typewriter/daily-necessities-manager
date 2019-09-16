@@ -49,6 +49,9 @@
         </div>
       </div>
     </b-container>
+    <footer class="fixed-bottom text-right">
+      <span v-if="isSaving" id="saving"><b-spinner small /> 保存しています...</span>
+    </footer>
   </div>
 </template>
 
@@ -199,5 +202,10 @@ li#navtitle > a {
   font-size: 115%;
   color: white;
   padding: 0;
+}
+
+#saving {
+  font-size: 90%;
+  color: rgba(0,0,0,0.3);
 }
 </style>
