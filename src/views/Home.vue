@@ -3,8 +3,11 @@
     <header class="sticky-top">
       <b-container>
         <b-navbar type="dark" variant="primary">
-          <b-navbar-brand href="#" v-if="!isSaving">Stokk</b-navbar-brand>
-          <b-navbar-brand href="#" v-if="isSaving"><small><b-spinner small /> 保存しています...</small></b-navbar-brand>
+          <b-navbar-nav>
+            <b-nav-item-dropdown text="Stokk" id="navtitle">
+              <b-dropdown-item to="/logout">ログアウト</b-dropdown-item>
+            </b-nav-item-dropdown>
+          </b-navbar-nav>
           <b-navbar-nav class="ml-auto">
             <b-nav-form>
               <b-button v-on:click="toggle" variant="text-decoration-none" class="text-white">
@@ -188,5 +191,13 @@ export default class Home extends Vue {
 <style scoped>
 div.xlarge {
   font-size: 400%;
+}
+</style>
+
+<style>
+li#navtitle > a {
+  font-size: 115%;
+  color: white;
+  padding: 0;
 }
 </style>

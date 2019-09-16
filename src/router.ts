@@ -26,6 +26,12 @@ const router = new Router({
       name: "privacy_policy",
       component: () =>
         import(/* webpackChunkName: "privacy_policy" */ "./views/PrivacyPolicy.vue")
+    },
+    {
+      path: "/logout",
+      name: "logout",
+      component: () =>
+        import(/* webpackChunkName: "logout" */ "./views/Logout.vue")
     }
   ]
 });
