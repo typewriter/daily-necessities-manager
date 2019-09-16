@@ -3,7 +3,7 @@
     <b-container>
       <b-navbar class="text-left">
         <b-navbar-nav>
-          <b-navbar-brand href="#"><span class="small text-secondary">シンプルな日用品ストック管理ツール</span><br>Stokk</b-navbar-brand>
+          <b-navbar-brand to="/"><span class="small text-secondary">シンプルな日用品ストック管理ツール</span><br>Stokk</b-navbar-brand>
         </b-navbar-nav>
       </b-navbar>
       <h5>利用規約</h5>
@@ -26,3 +26,9 @@ import { Component, Vue } from "vue-property-decorator";
 @Component({})
 export default class PrivacyPolicy extends Vue {}
 </script>
+
+<style scoped>
+.small {
+  font-size: 70%;
+}
+</style>
