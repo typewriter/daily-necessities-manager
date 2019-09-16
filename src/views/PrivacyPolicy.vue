@@ -26,3 +26,9 @@ import { Component, Vue } from "vue-property-decorator";
 @Component({})
 export default class PrivacyPolicy extends Vue {}
 </script>
+
+<style scoped>
+.small {
+  font-size: 70%;
+}
+</style>
