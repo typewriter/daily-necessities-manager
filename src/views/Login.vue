@@ -9,7 +9,7 @@
       <b-row>
         <b-col cols="12" lg="6" xl="6" class="align-self-center">
           <div class="description">
-            <b-img :src="require('../assets/screenshot.png')" fluid />
+            <b-img :src="require('../assets/stokk_animation.gif')" fluid />
           </div>
         </b-col>
         <b-col cols="12" lg="6" xl="6" class="p-3 align-self-center text-left">
